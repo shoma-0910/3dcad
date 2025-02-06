@@ -55,7 +55,7 @@ export default function Contact() {
           >
             <h2 className="text-3xl font-semibold mb-6 text-center text-black">会社概要</h2>
             <div className="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-2xl shadow-lg">
-              <Image src="/logo.svg" alt="土林さん Company Logo" width={200} height={200} className="mx-auto mb-6" />
+              <Image src="/logo.svg" alt="" width={200} height={200} className="mx-auto mb-6" />
               <div className="grid md:grid-cols-2 gap-8">
                 <motion.div whileHover={{ scale: 1.05 }} className="bg-white bg-opacity-20 p-6 rounded-xl shadow-md">
                   <h3 className="text-xl font-semibold mb-3 text-yellow-400">ミッション</h3>

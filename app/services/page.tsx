@@ -41,12 +41,12 @@ const services = [
 ]
 
 const portfolioItems = [
-  { id: 1, title: "自動車部品の設計", image: "/placeholder.svg?height=400&width=600", category: "CAD" },
-  { id: 2, title: "建築物の3Dスキャン", image: "/placeholder.svg?height=400&width=600", category: "スキャン" },
-  { id: 3, title: "医療機器のプロトタイプ", image: "/placeholder.svg?height=400&width=600", category: "CAD" },
-  { id: 4, title: "企業向け3D技術研修", image: "/placeholder.svg?height=400&width=600", category: "研修" },
-  { id: 5, title: "文化財のデジタル保存", image: "/placeholder.svg?height=400&width=600", category: "スキャン" },
-  { id: 6, title: "工業製品の品質管理", image: "/placeholder.svg?height=400&width=600", category: "スキャン" },
+  { id: 1, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
+  { id: 2, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
+  { id: 3, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
+  { id: 4, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
+  { id: 5, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
+  { id: 6, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
 ]
 
 const AnimatedSection: React.FC<{ children: React.ReactNode }> = ({ children }) => {
