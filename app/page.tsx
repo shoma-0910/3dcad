@@ -1,10 +1,10 @@
 "use client"
 
+
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, X } from "lucide-react"
-import { useState, useEffect } from "react"
-import { Dialog } from "@headlessui/react"
+import { ArrowRight } from "lucide-react"
+import { useEffect } from "react"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
@@ -15,13 +15,7 @@ type Service = {
   icon?: string
 }
 
-type BlogPost = {
-  id: number
-  title: string
-  date: string
-  excerpt: string
-  content: string
-}
+
 
 const FadeInWhenVisible: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const controls = useAnimation()

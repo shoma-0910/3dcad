@@ -7,11 +7,12 @@ import { XMarkIcon } from "@heroicons/react/24/outline"
 import BlogPostContent from "@/app/components/BlogPostContent"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { Canvas } from "@react-three/fiber"
-import dynamic from "next/dynamic"
 import Link from "next/link"
 
-const Scene = dynamic(() => import("@/components/Scene"), { ssr: false })
+
+
+
+
 
 export default function BlogPage() {
   const blogPosts = getBlogPosts()
@@ -26,11 +27,6 @@ export default function BlogPage() {
 
   return (
     <div className="relative min-h-screen">
-      <div className="absolute inset-0 z-0">
-        <Canvas>
-          <Scene />
-        </Canvas>
-      </div>
       <div className="relative z-10 container mx-auto px-6 py-12">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <h1 className="text-4xl font-bold mb-8 text-center text-white">ブログ・ニュース</h1>
