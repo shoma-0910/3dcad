@@ -1,47 +1,30 @@
-"use client"
+"use client";
 
-
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { useEffect } from "react"
-import { motion, useAnimation } from "framer-motion"
-import { useInView } from "react-intersection-observer"
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 type Service = {
-  id: string
-  title: string
-  description: string
-  icon?: string
-}
+  id: string;
+  title: string;
+  description: string;
+  icon?: string;
+};
 
-
-
+// 1. シンプルに whileInView を使った FadeIn コンポーネント
 const FadeInWhenVisible: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const controls = useAnimation()
-  const [ref, inView] = useInView()
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible")
-    }
-  }, [controls, inView])
-
   return (
     <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }} // 1回だけ発火、要素の30%が表示されたら実行
       transition={{ duration: 0.5 }}
-      variants={{
-        visible: { opacity: 1, y: 0 },
-        hidden: { opacity: 0, y: 50 },
-      }}
     >
       {children}
     </motion.div>
-  )
-}
+  );
+};
 
 const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
   return (
@@ -67,8 +50,8 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
       </Link>
     </motion.div>
-  )
-}
+  );
+};
 
 export default function Home() {
   return (
@@ -109,7 +92,7 @@ export default function Home() {
       </section>
 
       <section className="mb-32">
-        <div className="bg-gray-100  bg-opacity-100 backdrop-blur-md rounded-3xl p-8 shadow-2xl">
+        <div className="bg-gray-100 bg-opacity-100 backdrop-blur-md rounded-3xl p-8 shadow-2xl">
           <FadeInWhenVisible>
             <h2 className="text-5xl font-bold mb-16 text-center">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700 artistic-text-shadow">
@@ -138,7 +121,7 @@ export default function Home() {
           {blogPosts.map((post) => (
             <FadeInWhenVisible key={post.id}>
               <motion.div
-                className="bg-gray-100  p-8 rounded-2xl hover:shadow-xl transition-shadow duration-300 border border-yellow-500/30"
+                className="bg-gray-100 p-8 rounded-2xl hover:shadow-xl transition-shadow duration-300 border border-yellow-500/30"
                 whileHover={{ scale: 1.03 }}
               >
                 <h3 className="text-2xl font-semibold mb-4 text-yellow-500">{post.title}</h3>
@@ -168,7 +151,7 @@ export default function Home() {
         </FadeInWhenVisible>
       </section>
     </div>
-  )
+  );
 }
 
 const services = [
@@ -193,7 +176,7 @@ const services = [
       "3Dスキャン研修や3D CAD講座を提供。初心者からプロまで、カスタマイズされた教育プログラムで最新技術の習得を支援。",
     icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LINE_ALBUM_%E5%86%99%E7%9C%9F%E7%B4%A0%E6%9D%90%E3%81%A6%E3%82%99%E3%81%99_250106_85.jpg-QCgRMzOBaFxypBRGpe0msvJI74Z3r2.jpeg",
   },
-]
+];
 
 const blogPosts = [
   {
@@ -212,5 +195,4 @@ const blogPosts = [
     content:
       "3D技術の進歩により、文化財のデジタル保存が可能になりました。高精度の3Dスキャナーを使用することで、文化財の形状や表面のテクスチャを正確にデジタルデータとして記録することができます。このデータは、文化財の研究や修復に活用されるだけでなく、3Dプリンティング技術を用いてレプリカを作成することも可能です。さらに、バーチャルリアリティ技術と組み合わせることで、世界中の人々がインターネットを通じて文化財を体験できるようになります。このように、3D技術は文化財の保存と普及に大きく貢献しています。",
   },
-]
-
+];
