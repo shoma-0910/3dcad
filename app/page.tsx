@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 type Service = {
   id: string;
@@ -12,14 +13,31 @@ type Service = {
   icon?: string;
 };
 
-// 1. シンプルに whileInView を使った FadeIn コンポーネント
 const FadeInWhenVisible: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [mounted, setMounted] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    if (sessionStorage.getItem("pageHasAnimated") === "true") {
+      setHasAnimated(true);
+    }
+  }, []);
+
+  // クライアントでマウント完了するまでレンダリングを控える
+  if (!mounted) return null;
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }} // 1回だけ発火、要素の30%が表示されたら実行
+      initial={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      onAnimationComplete={() => {
+        if (!hasAnimated) {
+          sessionStorage.setItem("pageHasAnimated", "true");
+          setHasAnimated(true);
+        }
+      }}
     >
       {children}
     </motion.div>
