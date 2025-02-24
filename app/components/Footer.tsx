@@ -42,7 +42,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">会社情報</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-gray-300 hover:text-white transition duration-300">
+                <Link href="/contact" className="text-gray-300 hover:text-white transition duration-300">
                   会社概要
                 </Link>
               </li>

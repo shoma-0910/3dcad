@@ -73,7 +73,8 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-16 space-y-32">
+    // relative z-50 を追加して、ページ全体を最前面に表示する
+    <div className="container mx-auto px-4 py-16 space-y-32 relative z-50">
       <section className="mb-32">
         <FadeInWhenVisible>
           <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -129,7 +130,7 @@ export default function Home() {
       <section className="mb-32">
         <FadeInWhenVisible>
           <h2 className="text-4xl font-bold mb-16 text-center artistic-text-shadow">
-            <span className="text-yellow-600">ブログ</span>
+            <span className="text-yellow-400">ブログ</span>
           </h2>
           <p className="text-xl text-black mb-12 text-center max-w-3xl mx-auto">
             3D技術の最新トレンド、業界のニュース、そして私たちのサービスに関する情報をお届けします。
@@ -139,7 +140,7 @@ export default function Home() {
           {blogPosts.map((post) => (
             <FadeInWhenVisible key={post.id}>
               <motion.div
-                className="bg-gray-100 p-8 rounded-2xl hover:shadow-xl transition-shadow duration-300 border border-yellow-500/30"
+                className="bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow duration-300 border border-yellow-500/30"
                 whileHover={{ scale: 1.03 }}
               >
                 <h3 className="text-2xl font-semibold mb-4 text-yellow-500">{post.title}</h3>
@@ -175,7 +176,7 @@ export default function Home() {
 const services = [
   {
     id: "3d-cad-design",
-    title: "3D CADデザイン・製作支援",
+    title: "3D CADデザイン",
     description:
       "オリジナル製品やプロトタイプのデザイン、製作を一貫してサポート。ユニークで実用的なアイデアを形にします。",
     icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LINE_ALBUM_%E5%86%99%E7%9C%9F%E7%B4%A0%E6%9D%90%E3%81%A6%E3%82%99%E3%81%99_250106_17.jpg-c2UQchBvMHZEGxH6EU0RjijCuTatLn.jpeg",

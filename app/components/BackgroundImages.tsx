@@ -29,7 +29,6 @@ const getImagePositions = (path: string) => {
           className: "top-[40%] left-[-5%] rotate-[15deg]",
         },
       ]
-    // Add other cases for different paths if needed
     default:
       return []
   }
@@ -40,7 +39,10 @@ export default function BackgroundImages() {
   const images = getImagePositions(pathname)
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: -999 }}>
+    <div
+      className="fixed inset-0 pointer-events-none overflow-hidden"
+      style={{ zIndex: -999 }}
+    >
       {images.map((image, index) => (
         <motion.div
           key={index}
@@ -51,6 +53,8 @@ export default function BackgroundImages() {
             delay: index * 0.2,
             ease: "easeOut",
           }}
+          // このスタイルで各画像コンテナを最も背面に配置
+          style={{ zIndex: -1 }}
           className={`absolute w-64 h-64 md:w-96 md:h-96 ${image.className} overflow-hidden`}
         >
           <Image
@@ -60,20 +64,30 @@ export default function BackgroundImages() {
             className="object-cover w-full h-full opacity-40"
             sizes="(max-width: 768px) 256px, 384px"
           />
-          <div className="absolute inset-0 bg-black opacity-50" />
+          <div className="absolute inset-0 opacity-50" />
         </motion.div>
       ))}
+      {/* SVG を画像より上に表示する場合は z-index を 0 に設定 */}
       <svg
         className="absolute inset-0 w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1000 1000"
         preserveAspectRatio="none"
+        style={{ zIndex: 0 }}
       >
-        <path d="M0,1000 C200,800 400,900 600,850 S800,700 1000,800 L1000,1000 Z" fill="rgba(255,255,255,0.1)" />
-        <path d="M0,1000 C300,950 500,850 700,950 S900,850 1000,950 L1000,1000 Z" fill="rgba(255,255,255,0.05)" />
-        <path d="M0,1000 C150,950 350,900 550,950 S750,850 1000,900 L1000,1000 Z" fill="rgba(255,255,255,0.025)" />
+        <path
+          d="M0,1000 C200,800 400,900 600,850 S800,700 1000,800 L1000,1000 Z"
+          fill="rgba(255,255,255,0.1)"
+        />
+        <path
+          d="M0,1000 C300,950 500,850 700,950 S900,850 1000,950 L1000,1000 Z"
+          fill="rgba(255,255,255,0.05)"
+        />
+        <path
+          d="M0,1000 C150,950 350,900 550,950 S750,850 1000,900 L1000,1000 Z"
+          fill="rgba(255,255,255,0.025)"
+        />
       </svg>
     </div>
   )
 }
-

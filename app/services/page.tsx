@@ -1,16 +1,15 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { Dialog } from "@headlessui/react"
 import { XMarkIcon } from "@heroicons/react/24/outline"
 import { motion, AnimatePresence, useAnimation, useInView } from "framer-motion"
-import { useState } from "react"
 
 const services = [
   {
     id: "3d-cad-design",
-    title: "3D CADデザイン・製作支援",
+    title: "3D CADデザイン",
     description:
       "オリジナル製品やプロトタイプのデザイン、製作を一貫してサポート。ユニークで実用的なアイデアを形にします。",
     longDescription:
@@ -41,12 +40,12 @@ const services = [
 ]
 
 const portfolioItems = [
-  { id: 1, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
-  { id: 2, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
-  { id: 3, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
-  { id: 4, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
-  { id: 5, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
-  { id: 6, title: "テキスト", image: "/placeholder.svg?height=400&width=600", category: "" },
+  { id: 1, title: "テキスト", image: "/bird.jpeg", category: "" },
+  { id: 2, title: "テキスト", image: "/hito_before.jpeg", category: "" },
+  { id: 3, title: "テキスト", image: "/hito_after.jpeg", category: "" },
+  { id: 4, title: "テキスト", image: "/onigiri_before.jpeg", category: "" },
+  { id: 5, title: "テキスト", image: "/onigiri_after.jpeg", category: "" },
+  { id: 6, title: "テキスト", image: "/house.jpeg", category: "" },
 ]
 
 const AnimatedSection: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -92,9 +91,11 @@ const Services: React.FC = () => {
       <div className="absolute inset-0 z-0 bg-yellow-50" />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-7xl">
         <AnimatedSection>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center text-black">
+        <h1 className="text-5xl font-bold mb-12 text-center text-black font-display">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
             サービス・ポートフォリオ
-          </h1>
+          </span>
+        </h1>
         </AnimatedSection>
         <AnimatedSection>
           <section className="mb-16">
@@ -104,7 +105,7 @@ const Services: React.FC = () => {
                 <motion.div
                   key={service.id}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-gray-100 rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full"
+                  className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full"
                 >
                   <Image
                     src={service.image || "/placeholder.svg"}
@@ -136,7 +137,7 @@ const Services: React.FC = () => {
                 <motion.div
                   key={item.id}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-gray-100 rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full"
+                  className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full"
                   onClick={() => setSelectedItem(item)}
                 >
                   <Image
@@ -167,61 +168,133 @@ const Services: React.FC = () => {
                 aria-hidden="true"
               />
               <div className="fixed inset-0 flex items-center justify-center p-4">
-                <Dialog.Panel>
-                  <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.9, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-3xl w-full rounded-2xl bg-gray-800 bg-opacity-90 p-4 sm:p-6 shadow-xl"
-                  >
-                    <button
-                      onClick={() => setSelectedItem(null)}
-                      className="absolute top-2 right-2 text-gray-300 hover:text-white"
-                    >
-                      <XMarkIcon className="h-6 w-6" />
-                    </button>
-                    {selectedItem && (
-                      <div>
-                        <motion.div
-                          initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.2, duration: 0.5 }}
-                        >
-                          <Image
-                            src={selectedItem.image || "/placeholder.svg"}
-                            alt={selectedItem.title}
-                            width={600}
-                            height={400}
-                            className="w-full h-48 sm:h-64 object-cover rounded-t-2xl mb-4"
-                          />
-                        </motion.div>
-                        <motion.div
-                          initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.4, duration: 0.5 }}
-                        >
-                          <Dialog.Title className="text-xl sm:text-2xl font-semibold mb-2 text-black">
-                            {selectedItem.title}
-                          </Dialog.Title>
-                          {"longDescription" in selectedItem ? (
-                            <p className="text-gray-600">{selectedItem.longDescription}</p>
-                          ) : (
-                            <p className="text-gray-600">カテゴリー: {selectedItem.category}</p>
-                          )}
-                        </motion.div>
-                      </div>
-                    )}
-                  </motion.div>
-                </Dialog.Panel>
+              <Dialog.Panel>
+  <motion.div
+    initial={{ scale: 0.9, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    exit={{ scale: 0.9, opacity: 0 }}
+    transition={{ duration: 0.3 }}
+    // max-w-5xl を max-w-6xl に変更し、p-6 も少し調整
+    className="mx-auto max-w-6xl w-full rounded-2xl bg-white bg-opacity-90 p-8 shadow-xl"
+  >
+    <button
+      onClick={() => setSelectedItem(null)}
+      className="absolute top-2 right-2 text-gray-300 hover:text-white"
+    >
+      <XMarkIcon className="h-6 w-6" />
+    </button>
+    {selectedItem && (
+      <div>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <Image
+            src={selectedItem.image || "/placeholder.svg"}
+            alt={selectedItem.title}
+            width={600}
+            height={400}
+            className="w-full h-48 sm:h-64 object-cover rounded-t-2xl mb-4"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          <Dialog.Title className="text-xl sm:text-2xl font-semibold mb-2 text-black">
+            {selectedItem.title}
+          </Dialog.Title>
+          {"longDescription" in selectedItem ? (
+            <p className="text-black">{selectedItem.longDescription}</p>
+          ) : null}
+        </motion.div>
+      </div>
+    )}
+  </motion.div>
+</Dialog.Panel>
+
               </div>
             </Dialog>
           )}
         </AnimatePresence>
+          {/* Decorative curves background */}
+          <div
+            className="fixed inset-0 pointer-events-none overflow-hidden"
+            style={{ zIndex: -2 }}
+          >
+            <svg
+              className="absolute inset-0 w-full h-full"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1920 1080"
+              preserveAspectRatio="none"
+            >
+              {/* Blue curves */}
+              <path
+                d="M0,100 C400,150 800,50 1920,100"
+                fill="none"
+                stroke="rgba(135, 206, 235, 0.2)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,150 C600,200 1000,100 1920,150"
+                fill="none"
+                stroke="rgba(135, 206, 235, 0.15)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,200 C500,250 900,150 1920,200"
+                fill="none"
+                stroke="rgba(135, 206, 235, 0.1)"
+                strokeWidth="2"
+              />
+
+              {/* Pink curves */}
+              <path
+                d="M0,400 C400,450 800,350 1920,400"
+                fill="none"
+                stroke="rgba(255, 182, 193, 0.2)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,450 C600,500 1000,400 1920,450"
+                fill="none"
+                stroke="rgba(255, 182, 193, 0.15)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,500 C500,550 900,450 1920,500"
+                fill="none"
+                stroke="rgba(255, 182, 193, 0.1)"
+                strokeWidth="2"
+              />
+
+              {/* Green curves */}
+              <path
+                d="M0,700 C400,750 800,650 1920,700"
+                fill="none"
+                stroke="rgba(144, 238, 144, 0.2)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,750 C600,800 1000,700 1920,750"
+                fill="none"
+                stroke="rgba(144, 238, 144, 0.15)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,800 C500,850 900,750 1920,800"
+                fill="none"
+                stroke="rgba(144, 238, 144, 0.1)"
+                strokeWidth="2"
+              />
+            </svg>
+          </div>
+
       </div>
     </div>
   )
 }
 
 export default Services
-

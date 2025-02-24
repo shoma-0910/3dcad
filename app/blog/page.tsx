@@ -26,10 +26,11 @@ export default function BlogPage() {
 
       <div className="relative z-10 container mx-auto px-6 py-12">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <h1 className="text-4xl font-bold mb-8 text-center text-black">ブログ・ニュース</h1>
-          <p className="text-xl text-black mb-12 text-center max-w-3xl mx-auto">
-          テキストテキスト
-          </p>
+        <h1 className="text-5xl font-bold mb-12 text-center text-black font-display">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
+            ブログ・ニュース
+          </span>
+        </h1>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -40,7 +41,7 @@ export default function BlogPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <article className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full flex flex-col">
+              <article className="bg-white  backdrop-blur-md rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full flex flex-col">
                 {post.coverImage && (
                   <div className="relative h-48 w-full">
                     <Image
@@ -89,7 +90,7 @@ export default function BlogPage() {
               key={i}
               onClick={() => paginate(i + 1)}
               className={`mx-1 px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 ${
-                currentPage === i + 1 ? "bg-yellow-500 text-white" : "bg-gray-700 text-white hover:bg-gray-600"
+                currentPage === i + 1 ? "bg-yellow-500 text-white" : "bg-white text-white hover:bg-gray-600"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -116,7 +117,7 @@ export default function BlogPage() {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="mx-auto max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-2xl bg-white bg-opacity-10 backdrop-blur-md p-6 shadow-xl relative"
+                    className="mx-auto max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-2xl bg-white backdrop-blur-md p-6 shadow-xl relative"
                   >
                     <button
                       onClick={() => setSelectedPost(null)}

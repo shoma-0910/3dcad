@@ -54,16 +54,16 @@ export default function Contact() {
             className="mb-16"
           >
             <h2 className="text-3xl font-semibold mb-6 text-center text-black">会社概要</h2>
-            <div className="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-2xl shadow-lg">
-              <Image src="/logo.svg" alt="" width={200} height={200} className="mx-auto mb-6" />
+            <div className="bg-white backdrop-blur-md p-8 rounded-2xl shadow-lg">
+              
               <div className="grid md:grid-cols-2 gap-8">
-                <motion.div whileHover={{ scale: 1.05 }} className="bg-white bg-opacity-20 p-6 rounded-xl shadow-md">
+                <motion.div whileHover={{ scale: 1.05 }} className="bg-white  p-6 rounded-xl shadow-md">
                   <h3 className="text-xl font-semibold mb-3 text-yellow-400">ミッション</h3>
                   <p className="text-black">
                     「創造をサポートし、誰もが技術を楽しめる世界を実現する。」クリエイターや企業が抱える課題に寄り添い、3D技術や教育を通じて、アイデアを実現しやすい環境を提供します。
                   </p>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} className="bg-white bg-opacity-20 p-6 rounded-xl shadow-md">
+                <motion.div whileHover={{ scale: 1.05 }} className="bg-white  p-6 rounded-xl shadow-md">
                   <h3 className="text-xl font-semibold mb-3 text-yellow-400">ビジョン</h3>
                   <p className="text-black">
                     「3D技術の力で、次世代のクリエイティブスタンダードを築く。」教育、製造、デザイン分野で3D技術を普及させ、人々の創造力を最大限に引き出す未来を目指します。
@@ -79,13 +79,13 @@ export default function Contact() {
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             <h2 className="text-3xl font-semibold mb-6 text-black text-center">連絡先情報</h2>
-            <div className="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-2xl shadow-lg">
+            <div className="bg-white  backdrop-blur-md p-8 rounded-2xl shadow-lg">
               <div className="grid md:grid-cols-3 gap-8">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   onHoverStart={() => setIsHovered("address")}
                   onHoverEnd={() => setIsHovered("")}
-                  className="bg-white bg-opacity-20 p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center"
+                  className="bg-white  p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center"
                 >
                   <MapPin
                     className={`w-12 h-12 mb-4 ${isHovered === "address" ? "text-yellow-400" : "text-gray-400"} transition-colors duration-300`}
@@ -96,7 +96,7 @@ export default function Contact() {
                   whileHover={{ scale: 1.05 }}
                   onHoverStart={() => setIsHovered("phone")}
                   onHoverEnd={() => setIsHovered("")}
-                  className="bg-white bg-opacity-20 p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center"
+                  className="bg-white  p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center"
                 >
                   <Phone
                     className={`w-12 h-12 mb-4 ${isHovered === "phone" ? "text-yellow-400" : "text-gray-400"} transition-colors duration-300`}
@@ -107,7 +107,7 @@ export default function Contact() {
                   whileHover={{ scale: 1.05 }}
                   onHoverStart={() => setIsHovered("email")}
                   onHoverEnd={() => setIsHovered("")}
-                  className="bg-white bg-opacity-20 p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center"
+                  className="bg-white  p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center"
                 >
                   <Mail
                     className={`w-12 h-12 mb-4 ${isHovered === "email" ? "text-yellow-400" : "text-gray-400"} transition-colors duration-300`}
