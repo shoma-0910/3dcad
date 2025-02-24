@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 
 import "./globals.css";
@@ -5,6 +7,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import Link from "next/link";
 import { Home, Briefcase, Mail, Book, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import BackgroundImages from "./components/BackgroundImages";
 import Footer from "./components/Footer";
 
@@ -19,16 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [headerOpacity, setHeaderOpacity] = useState(1);
+  // usePathname を使って現在のパスを取得
+  const pathname = usePathname();
 
   useEffect(() => {
-    setMounted(true);
-
+    // mounted 状態は不要なため setMounted を削除
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const maxScroll = 200;
-      const minOpacity = window.location.pathname === "/" ? 0.3 : 0.5;
+      const minOpacity = pathname === "/" ? 0.3 : 0.5;
       if (scrollPosition <= maxScroll) {
         const newOpacity = 1 - (scrollPosition / maxScroll) * (1 - minOpacity);
         setHeaderOpacity(newOpacity);
@@ -39,7 +42,7 @@ export default function RootLayout({
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   const navItems = [
     { href: "/", label: "TOP", icon: Home },
@@ -56,7 +59,7 @@ export default function RootLayout({
           className="fixed top-0 left-0 w-full bg-white bg-opacity-80 backdrop-blur-md z-20 transition-opacity duration-300"
           style={{
             backgroundColor: `rgba(255, 255, 255, ${
-              window.location.pathname === "/" ? headerOpacity * 0.8 : headerOpacity * 0.9
+              pathname === "/" ? headerOpacity * 0.8 : headerOpacity * 0.9
             })`,
           }}
         >
@@ -73,7 +76,7 @@ export default function RootLayout({
                       <Link
                         href={item.href}
                         className={`flex items-center space-x-2 text-sm ${
-                          window.location.pathname === item.href
+                          pathname === item.href
                             ? "text-yellow-500"
                             : "text-black hover:text-yellow-500"
                         }`}
@@ -103,7 +106,7 @@ export default function RootLayout({
                     <Link
                       href={item.href}
                       className={`flex items-center space-x-3 ${
-                        window.location.pathname === item.href ? "text-yellow-500" : "text-white"
+                        pathname === item.href ? "text-yellow-500" : "text-white"
                       }`}
                       onClick={() => setIsMenuOpen(false)}
                     >

@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useState } from "react"
-import { getBlogPosts, type BlogPost } from "@/lib/blog"
-import { Dialog } from "@headlessui/react"
-import { XMarkIcon } from "@heroicons/react/24/outline"
-import BlogPostContent from "@/app/components/BlogPostContent"
+import { getBlogPosts,type BlogPost} from "@/lib/blog"
 import Image from "next/image"
 
 export default function BlogPage() {
   const blogPosts = getBlogPosts()
   const [currentPage, setCurrentPage] = useState(1)
+
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null)
+
   const postsPerPage = 6
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage

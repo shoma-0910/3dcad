@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin } from "lucide-react"
 import BackgroundImages from "../components/BackgroundImages"
