@@ -6,6 +6,7 @@ import { Dialog } from "@headlessui/react"
 import { XMarkIcon } from "@heroicons/react/24/outline"
 import { motion, AnimatePresence, useAnimation, useInView } from "framer-motion"
 
+
 const services = [
   {
     id: "3d-cad-design",

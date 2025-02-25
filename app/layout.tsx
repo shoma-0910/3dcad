@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 
 "use client";
 
@@ -56,7 +56,7 @@ export default function RootLayout({
       <body className="bg-yellow-50 text-gray-900 flex flex-col min-h-screen">
         {/* Top Navigation Bar */}
         <header
-          className="fixed top-0 left-0 w-full bg-white bg-opacity-80 backdrop-blur-md z-20 transition-opacity duration-300"
+          className="fixed top-0 left-0 w-full bg-white bg-opacity-80 backdrop-blur-md  z-[9999] transition-opacity duration-300"
           style={{
             backgroundColor: `rgba(255, 255, 255, ${
               pathname === "/" ? headerOpacity * 0.8 : headerOpacity * 0.9

@@ -59,7 +59,7 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
         className="mx-auto mb-4"
       />
       <h3 className="text-xl font-semibold mb-2 text-yellow-400">{service.title}</h3>
-      <p className="text-black text-sm mb-4">{service.description}</p>
+      
       <Link
         href={`/services#${service.id}`}
         className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition duration-300 group"
@@ -147,7 +147,7 @@ export default function Home() {
                 <p className="text-black text-sm mb-4">{post.date}</p>
                 <p className="text-black mb-6">{post.excerpt}</p>
                 <Link
-                  href={`/blog/${post.id}`}
+                  href="blog"
                   className="text-yellow-500 hover:text-yellow-400 inline-flex items-center transition duration-300"
                 >
                   続きを読む

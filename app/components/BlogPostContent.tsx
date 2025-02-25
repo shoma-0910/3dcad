@@ -21,13 +21,13 @@ export default function BlogPostContent({ post, className = "" }: BlogPostConten
             />
           </div>
         )}
-        <h1 className="text-4xl font-bold mb-4 text-white">{post.title}</h1>
+        <h1 className="text-4xl font-bold mb-4 text-black">{post.title}</h1>
         <div className="flex items-center text-gray-300 mb-8">
           <span>{post.date}</span>
         </div>
         <div
-          className="text-white [&_figure]:my-8 [&_figure]:mx-0 [&_img]:rounded-lg [&_figcaption]:text-center [&_figcaption]:text-gray-400 [&_figcaption]:mt-2"
-          dangerouslySetInnerHTML={{ __html: post.content.replace("枝川さん", "土林さん") }}
+          className="text-black [&_figure]:my-8 [&_figure]:mx-0 [&_img]:rounded-lg [&_figcaption]:text-center [&_figcaption]:text-gray-400 [&_figcaption]:mt-2"
+          dangerouslySetInnerHTML={{ __html: post.content.replace("土林さん", "") }}
         />
       </article>
     </div>
