@@ -10,13 +10,12 @@ import { motion, AnimatePresence, useAnimation, useInView } from "framer-motion"
 const services = [
   {
     id: "3d-cad-design",
-    title: "3D CADデザイン",
+    title: "3DCADデザイン",
     description:
       "オリジナル製品やプロトタイプのデザイン、製作を一貫してサポート。ユニークで実用的なアイデアを形にします。",
     longDescription:
       "最新のCADソフトウェアを駆使し、お客様のビジョンを3Dモデルへと変換します。製品設計から試作まで、革新的なソリューションを提供し、アイデアの実現をサポートします。複雑な形状や機構も、高精度で効率的に設計いたします。",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9CB9EE6A-06CB-465C-922C-5C399A34D477-UGBzxT5wLo6yCb9gzHQYELHUw4vcLM.jpeg",
+    image: "/3DCADデザイン.jpg"
   },
   {
     id: "3d-scan-service",

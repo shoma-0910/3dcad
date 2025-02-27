@@ -71,6 +71,51 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
   );
 };
 
+const services = [
+  {
+    id: "3d-cad-design",
+    title: "3DCADデザイン",
+    description:
+      "オリジナル製品やプロトタイプのデザイン、製作を一貫してサポート。ユニークで実用的なアイデアを形にします。",
+    icon: "/3DCADデザイン.jpg", // ここを変更
+  },
+  {
+    id: "3d-scan-service",
+    title: "3Dスキャンサービス",
+    description:
+      "高精度な3Dスキャンを活用し、オブジェクトや人物のデータ化を提供。製品開発や記念品制作、逆算エンジニアリングに対応可能。",
+    icon:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/568CE458-8A2E-4012-98DD-FA7177087960-UHg802Qp4Wpo5aJchNPDvEoFL204w2.jpeg", // ここを変更
+  },
+  {
+    id: "technical-training",
+    title: "技術研修・講座",
+    description:
+      "3Dスキャン研修や3D CAD講座を提供。初心者からプロまで、カスタマイズされた教育プログラムで最新技術の習得を支援。",
+    icon:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LINE_ALBUM_%E5%86%99%E7%9C%9F%E7%B4%A0%E6%9D%90%E3%81%A6%E3%82%99%E3%81%99_250106_85.jpg-QCgRMzOBaFxypBRGpe0msvJI74Z3r2.jpeg",
+  },
+];
+
+const blogPosts = [
+  {
+    id: 1,
+    title: "3Dプリンティングが製造業にもたらす革新",
+    date: "2023年6月15日",
+    excerpt: "3Dプリンティング技術の進化が、製造業にどのような変革をもたらしているかを解説します。",
+    content:
+      "3Dプリンティング技術は、製造業に革命をもたらしています。従来の製造方法と比較して、3Dプリンティングは複雑な形状の製品を効率的に作成できるだけでなく、カスタマイズ製品の製造も容易にします。さらに、プロトタイピングの速度を大幅に向上させ、製品開発サイクルを短縮することができます。この技術は、航空宇宙産業、医療機器産業、自動車産業など、様々な分野で活用されており、今後さらなる発展が期待されています。",
+  },
+  {
+    id: 2,
+    title: "3D技術を活用した文化財のデジタル保存",
+    date: "2023年5月22日",
+    excerpt: "3Dスキャンと3Dプリンティング技術を用いた文化財のデジタル保存と活用について紹介します。",
+    content:
+      "3D技術の進歩により、文化財のデジタル保存が可能になりました。高精度の3Dスキャナーを使用することで、文化財の形状や表面のテクスチャを正確にデジタルデータとして記録することができます。このデータは、文化財の研究や修復に活用されるだけでなく、3Dプリンティング技術を用いてレプリカを作成することも可能です。さらに、バーチャルリアリティ技術と組み合わせることで、世界中の人々がインターネットを通じて文化財を体験できるようになります。このように、3D技術は文化財の保存と普及に大きく貢献しています。",
+  },
+];
+
 export default function Home() {
   return (
     // relative z-50 を追加して、ページ全体を最前面に表示する
@@ -172,46 +217,3 @@ export default function Home() {
     </div>
   );
 }
-
-const services = [
-  {
-    id: "3d-cad-design",
-    title: "3D CADデザイン",
-    description:
-      "オリジナル製品やプロトタイプのデザイン、製作を一貫してサポート。ユニークで実用的なアイデアを形にします。",
-    icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LINE_ALBUM_%E5%86%99%E7%9C%9F%E7%B4%A0%E6%9D%90%E3%81%A6%E3%82%99%E3%81%99_250106_17.jpg-c2UQchBvMHZEGxH6EU0RjijCuTatLn.jpeg",
-  },
-  {
-    id: "3d-scan-service",
-    title: "3Dスキャンサービス",
-    description:
-      "高精度な3Dスキャンを活用し、オブジェクトや人物のデータ化を提供。製品開発や記念品制作、逆算エンジニアリングに対応可能。",
-    icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LINE_ALBUM_%E5%86%99%E7%9C%9F%E7%B4%A0%E6%9D%90%E3%81%A6%E3%82%99%E3%81%99_250106_8.jpg-onhvEqPLwjbNlCZg8QvCrZDjJESL6M.jpeg",
-  },
-  {
-    id: "technical-training",
-    title: "技術研修・講座",
-    description:
-      "3Dスキャン研修や3D CAD講座を提供。初心者からプロまで、カスタマイズされた教育プログラムで最新技術の習得を支援。",
-    icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LINE_ALBUM_%E5%86%99%E7%9C%9F%E7%B4%A0%E6%9D%90%E3%81%A6%E3%82%99%E3%81%99_250106_85.jpg-QCgRMzOBaFxypBRGpe0msvJI74Z3r2.jpeg",
-  },
-];
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "3Dプリンティングが製造業にもたらす革新",
-    date: "2023年6月15日",
-    excerpt: "3Dプリンティング技術の進化が、製造業にどのような変革をもたらしているかを解説します。",
-    content:
-      "3Dプリンティング技術は、製造業に革命をもたらしています。従来の製造方法と比較して、3Dプリンティングは複雑な形状の製品を効率的に作成できるだけでなく、カスタマイズ製品の製造も容易にします。さらに、プロトタイピングの速度を大幅に向上させ、製品開発サイクルを短縮することができます。この技術は、航空宇宙産業、医療機器産業、自動車産業など、様々な分野で活用されており、今後さらなる発展が期待されています。",
-  },
-  {
-    id: 2,
-    title: "3D技術を活用した文化財のデジタル保存",
-    date: "2023年5月22日",
-    excerpt: "3Dスキャンと3Dプリンティング技術を用いた文化財のデジタル保存と活用について紹介します。",
-    content:
-      "3D技術の進歩により、文化財のデジタル保存が可能になりました。高精度の3Dスキャナーを使用することで、文化財の形状や表面のテクスチャを正確にデジタルデータとして記録することができます。このデータは、文化財の研究や修復に活用されるだけでなく、3Dプリンティング技術を用いてレプリカを作成することも可能です。さらに、バーチャルリアリティ技術と組み合わせることで、世界中の人々がインターネットを通じて文化財を体験できるようになります。このように、3D技術は文化財の保存と普及に大きく貢献しています。",
-  },
-];
