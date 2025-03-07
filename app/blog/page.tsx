@@ -5,7 +5,6 @@ import { getBlogPosts, type BlogPost } from "@/lib/blog"
 import { Dialog } from "@headlessui/react"
 import { XMarkIcon } from "@heroicons/react/24/outline"
 import BlogPostContent from "@/app/components/BlogPostContent"
-import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 
 export default function BlogPage() {
@@ -21,19 +20,16 @@ export default function BlogPage() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Decorative curves background */}
-      {/* Removed SVG curves */}
-
-      <div className="relative z-10 container mx-auto px-6 py-12">
+      <div className="relative z-10 container mx-auto px-6 py-12 max-w-3xl">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <h1 className="text-5xl font-bold mb-12 text-center text-black font-display">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
-            ブログ・ニュース
-          </span>
-        </h1>
+          <h1 className="text-3xl md:text-6xl font-bold mb-12 text-center text-black font-display">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
+              ブログ・ニュース
+            </span>
+          </h1>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="space-y-8">
           {currentPosts.map((post, index) => (
             <motion.div
               key={post.id}
@@ -41,26 +37,17 @@ export default function BlogPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <article className="bg-white  backdrop-blur-md rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full flex flex-col">
-                {post.coverImage && (
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src={post.coverImage || "/placeholder.svg"}
-                      alt={post.title}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
-                )}
+              <article className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 flex flex-col md:flex-row">
+                
                 <div className="p-6 flex flex-col flex-grow">
-                  <h2 className="text-2xl font-semibold mb-4 text-black">{post.title}</h2>
-                  <div className="flex items-center text-black mb-4">
+                  <h2 className="text-2xl font-semibold mb-3 text-black">{post.title}</h2>
+                  <div className="flex items-center text-black mb-3">
                     <span>{post.date}</span>
                   </div>
-                  <p className="text-black mb-6 flex-grow">{post.excerpt}</p>
+                  <p className="text-black mb-4 flex-grow">{post.excerpt}</p>
                   <motion.button
                     onClick={() => setSelectedPost(post)}
-                    className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition duration-300 font-semibold hover:scale-105 transform"
+                    className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition duration-300 font-semibold hover:scale-105 transform self-start"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -90,7 +77,7 @@ export default function BlogPage() {
               key={i}
               onClick={() => paginate(i + 1)}
               className={`mx-1 px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 ${
-                currentPage === i + 1 ? "bg-yellow-500 text-white" : "bg-white text-white hover:bg-gray-600"
+                currentPage === i + 1 ? "bg-yellow-500 text-white" : "bg-white text-gray-700 hover:bg-gray-100"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -117,15 +104,15 @@ export default function BlogPage() {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="mx-auto max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-2xl bg-white backdrop-blur-md p-6 shadow-xl relative"
+                    className="mx-auto max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-xl relative"
                   >
                     <button
                       onClick={() => setSelectedPost(null)}
-                      className="absolute top-2 right-2 text-gray-300 hover:text-white"
+                      className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
                     >
                       <XMarkIcon className="h-6 w-6" />
                     </button>
-                    <BlogPostContent post={selectedPost} className="overflow-y-auto text-white" />
+                    <BlogPostContent post={selectedPost} className="overflow-y-auto text-gray-800" />
                   </motion.div>
                 </Dialog.Panel>
               </div>

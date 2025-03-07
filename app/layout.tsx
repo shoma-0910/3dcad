@@ -98,7 +98,7 @@ export default function RootLayout({
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="fixed inset-x-0 top-16 bg-black bg-opacity-50 backdrop-blur-md z-50 md:hidden">
+          <div className="fixed inset-x-0 top-16 bg-black bg-opacity-50 backdrop-blur-md z-[9999] md:hidden">
             <nav className="container mx-auto px-4 py-4">
               <ul className="space-y-4">
                 {navItems.map((item) => (
