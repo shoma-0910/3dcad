@@ -34,8 +34,7 @@ const services = [
     longDescription:
       "3Dスキャン研修：初級からプロ向けまで、最新の3Dスキャン技術の習得を支援。実践的なワークショップを通じて、効率的なスキャン手法や後処理技術を学びます。3D CAD講座：子どもからクリエイター、プロフェッショナルまで対応可能なカスタマイズされた教育プログラムを提供。Fusion 360を活用した設計の基礎から応用技術まで網羅し、3D設計スキルの向上をサポートします。",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LINE_ALBUM_%E5%86%99%E7%9C%9F%E7%B4%A0%E6%9D%90%E3%81%A6%E3%82%99%E3%81%99_250106_85.jpg-QCgRMzOBaFxypBRGpe0msvJI74Z3r2.jpeg",
-  },
+      "/mozaiku.png",}
 ]
 
 const portfolioItems = [

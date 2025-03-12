@@ -98,8 +98,7 @@ const services = [
     title: "技術研修・講座",
     description:
       "3Dスキャン研修や3D CAD講座を提供。初心者からプロまで、カスタマイズされた教育プログラムで最新技術の習得を支援。",
-    icon:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LINE_ALBUM_%E5%86%99%E7%9C%9F%E7%B4%A0%E6%9D%90%E3%81%A6%E3%82%99%E3%81%99_250106_85.jpg-QCgRMzOBaFxypBRGpe0msvJI74Z3r2.jpeg",
+    icon:"/mozaiku.png",
   },
 ];
 
@@ -199,7 +198,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-16 text-center artistic-text-shadow">
             <span className="text-yellow-400">ブログ</span>
           </h2>
-          <p className="text-xl text-black mb-12 text-center max-w-3xl mx-auto">
+          <p className="text-xl text-black mb-12  max-w-3xl mx-auto">
             3D技術の最新トレンド、業界のニュース、そして私たちのサービスに関する情報をお届けします。
           </p>
         </FadeInWhenVisible>
@@ -227,7 +226,7 @@ export default function Home() {
           ))}
         </div>
         <FadeInWhenVisible>
-          <div className="text-center mt-16">
+          <div className="mt-16">
             <Link
               href="/blog"
               className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-10 py-4 rounded-full transition duration-300 inline-flex items-center justify-center font-semibold text-lg shadow-lg hover:shadow-xl glow"
