@@ -39,12 +39,12 @@ const services = [
 ]
 
 const portfolioItems = [
-  { id: 1, title: "テキスト", image: "/bird.jpeg", category: "" },
-  { id: 2, title: "テキスト", image: "/hito_before.jpeg", category: "" },
-  { id: 3, title: "テキスト", image: "/hito_after.jpeg", category: "" },
-  { id: 4, title: "テキスト", image: "/onigiri_before.jpeg", category: "" },
-  { id: 5, title: "テキスト", image: "/onigiri_after.jpeg", category: "" },
-  { id: 6, title: "テキスト", image: "/house.jpeg", category: "" },
+  { id: 1, title: "鳥", image: "/bird.jpeg", category: "" },
+  { id: 2, title: "人　BEFORE", image: "/hito_before.jpeg", category: "" },
+  { id: 3, title: "人　AFTER", image: "/hito_after.jpeg", category: "" },
+  { id: 4, title: "ごえんお結び　BEFORE", image: "/onigiri_before.jpeg", category: "" },
+  { id: 5, title: "ごえんお結び　AFTER", image: "/onigiri_after.jpeg", category: "" },
+  { id: 6, title: "建物", image: "/house.jpeg", category: "" },
 ]
 
 const AnimatedSection: React.FC<{ children: React.ReactNode }> = ({ children }) => {

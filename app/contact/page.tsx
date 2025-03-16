@@ -70,7 +70,8 @@ export default function Contact() {
                 <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
                   <div className="px-6 py-4">
                     <p className="text-sm text-gray-600 mt-1">
-                      ご質問やご意見がございましたら、お気軽にお問い合わせください。
+                      ご質問やご意見がございましたら、お気軽にお問い合わせください。<br />
+                      「送信する」ボタンを押すと別ページに遷移しますので青文字のURLを押せば当ページに戻ります。
                     </p>
                   </div>
 
