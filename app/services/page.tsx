@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import Head from "next/head"
 import { Dialog } from "@headlessui/react"
 import { XMarkIcon } from "@heroicons/react/24/outline"
 import { motion, AnimatePresence, useAnimation, useInView } from "framer-motion"
@@ -33,8 +34,8 @@ const services = [
       "3Dスキャン研修や3D CAD講座を提供。初心者からプロまで、カスタマイズされた教育プログラムで最新技術の習得を支援。",
     longDescription:
       "3Dスキャン研修：初級からプロ向けまで、最新の3Dスキャン技術の習得を支援。実践的なワークショップを通じて、効率的なスキャン手法や後処理技術を学びます。3D CAD講座：子どもからクリエイター、プロフェッショナルまで対応可能なカスタマイズされた教育プログラムを提供。Fusion 360を活用した設計の基礎から応用技術まで網羅し、3D設計スキルの向上をサポートします。",
-    image:
-      "/mozaiku.png",}
+    image: "/mozaiku.png",
+  }
 ]
 
 const portfolioItems = [
@@ -84,218 +85,244 @@ type Item = {
 const Services: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<Item | null>(null)
 
-
-
-
   return (
-    <div className="relative min-h-screen">
-      <div className="absolute inset-0 z-0 bg-yellow-50" />
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-7xl">
-        <AnimatedSection>
-          <h1 className="text-3xl md:text-6xl font-bold mb-12 text-center text-black font-display">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
-              サービス・ポートフォリオ
-            </span>
-          </h1>
-        </AnimatedSection>
-        <AnimatedSection>
-          <section className="mb-16">
-            <h2 className="text-3xl font-semibold mb-8 text-black text-center">サービス紹介</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service) => (
-                <motion.div
-                  key={service.id}
-                  whileHover={{
-                    scale: 1.05,
-                    rotate: [0, -5, 5, 0],
-                    transition: { duration: 0.5 },
-                  }}
-                  className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full"
-                >
-                  <Image
-                    src={service.image || "/placeholder.svg"}
-                    alt={service.title}
-                    width={800}
-                    height={600}
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="p-6 flex flex-col h-full">
-                    <h3 className="text-xl font-semibold mb-2 text-black">{service.title}</h3>
-                    <p className="mb-4 flex-grow">{service.description}</p>
-                   
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-        </AnimatedSection>
-        <AnimatedSection>
-          <section className="mb-16">
-            <h2 className="text-3xl font-semibold mb-8 text-black text-center">ポートフォリオ</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {portfolioItems.map((item) => (
-                <motion.div
-                  key={item.id}
-                  whileHover={{
-                    scale: 1.05,
-                    rotate: [0, -5, 5, 0],
-                    transition: { duration: 0.5 },
-                  }}
-                  className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full"
-                  onClick={() => setSelectedItem(item)}
-                >
-                  <Image
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.title}
-                    width={800}
-                    height={600}
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-black">{item.title}</h3>
-                    <span className="text-gray-600">{item.category}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-        </AnimatedSection>
-        <AnimatePresence>
-          {selectedItem && (
-            <Dialog open={selectedItem !== null} onClose={() => setSelectedItem(null)} className="relative z-50">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="fixed inset-0 bg-black/70"
-                aria-hidden="true"
-              />
-              <div className="fixed inset-0 flex items-center justify-center p-4">
-                <Dialog.Panel>
+    <>
+      <Head>
+        {/* 文字コードとレスポンシブ対応 */}
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* ページタイトルと説明 */}
+        <title>サービス・ポートフォリオ - 3DCAD</title>
+        <meta
+          name="description"
+          content="革新的な3DCADデザイン、3Dスキャンサービス、技術研修・講座の紹介と実績ポートフォリオ。最新技術とデザインで未来を切り拓くサービスを提供します。"
+        />
+        <meta name="keywords" content="3DCAD, 3Dスキャン, 技術研修, ポートフォリオ, サービス, デザイン" />
+        <link rel="canonical" href="https://yourwebsite.com/services" />
+        {/* Open Graph / SNS 用タグ */}
+        <meta property="og:title" content="サービス・ポートフォリオ - 3DCAD" />
+        <meta
+          property="og:description"
+          content="革新的な3DCADデザイン、3Dスキャンサービス、技術研修・講座の紹介と実績ポートフォリオ。最新技術とデザインで未来を切り拓くサービスを提供します。"
+        />
+        <meta property="og:url" content="https://yourwebsite.com/services" />
+        <meta property="og:image" content="https://yourwebsite.com/path/to/og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="サービス・ポートフォリオ - 3DCAD" />
+        <meta
+          name="twitter:description"
+          content="革新的な3DCADデザイン、3Dスキャンサービス、技術研修・講座の紹介と実績ポートフォリオ。最新技術とデザインで未来を切り拓くサービスを提供します。"
+        />
+        <meta name="twitter:image" content="https://yourwebsite.com/path/to/twitter-image.jpg" />
+      </Head>
+      <div className="relative min-h-screen">
+        <div className="absolute inset-0 z-0 bg-yellow-50" />
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-7xl">
+          <AnimatedSection>
+            <h1 className="text-3xl md:text-6xl font-bold mb-12 text-center text-black font-display">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
+                サービス・ポートフォリオ
+              </span>
+            </h1>
+          </AnimatedSection>
+          <AnimatedSection>
+            <section className="mb-16">
+              <h2 className="text-3xl font-semibold mb-8 text-black text-center">サービス紹介</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {services.map((service) => (
                   <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.9, opacity: 0 }}
-                    // スプリングアニメーションでバウンド感を付与
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="mx-auto max-w-6xl w-full rounded-2xl bg-white bg-opacity-90 p-8 shadow-xl"
+                    key={service.id}
+                    whileHover={{
+                      scale: 1.05,
+                      rotate: [0, -5, 5, 0],
+                      transition: { duration: 0.5 },
+                    }}
+                    className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full"
                   >
-                    <button
-                      onClick={() => setSelectedItem(null)}
-                      className="absolute top-2 right-2 text-gray-300 hover:text-white"
-                    >
-                      <XMarkIcon className="h-6 w-6" />
-                    </button>
-                    {selectedItem && (
-                      <div>
-                        <motion.div
-                          initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.2, duration: 0.5 }}
-                        >
-                          <Image
-                            src={selectedItem.image || "/placeholder.svg"}
-                            alt={selectedItem.title}
-                            width={600}
-                            height={400}
-                            className="w-full h-48 sm:h-64 object-cover rounded-t-2xl mb-4"
-                          />
-                        </motion.div>
-                        <motion.div
-                          initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.4, duration: 0.5 }}
-                        >
-                          <Dialog.Title className="text-xl sm:text-2xl font-semibold mb-2 text-black">
-                            {selectedItem.title}
-                          </Dialog.Title>
-                          {"longDescription" in selectedItem ? (
-                            <p className="text-black">{selectedItem.longDescription}</p>
-                          ) : null}
-                        </motion.div>
-                      </div>
-                    )}
+                    <Image
+                      src={service.image || "/placeholder.svg"}
+                      alt={service.title}
+                      width={800}
+                      height={600}
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="p-6 flex flex-col h-full">
+                      <h3 className="text-xl font-semibold mb-2 text-black">{service.title}</h3>
+                      <p className="mb-4 flex-grow">{service.description}</p>
+                    </div>
                   </motion.div>
-                </Dialog.Panel>
+                ))}
               </div>
-            </Dialog>
-          )}
-        </AnimatePresence>
-        {/* Decorative curves background */}
-        <div
-          className="fixed inset-0 pointer-events-none overflow-hidden"
-          style={{ zIndex: -2 }}
-        >
-          <svg
-            className="absolute inset-0 w-full h-full"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1920 1080"
-            preserveAspectRatio="none"
+            </section>
+          </AnimatedSection>
+          <AnimatedSection>
+            <section className="mb-16">
+              <h2 className="text-3xl font-semibold mb-8 text-black text-center">ポートフォリオ</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {portfolioItems.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    whileHover={{
+                      scale: 1.05,
+                      rotate: [0, -5, 5, 0],
+                      transition: { duration: 0.5 },
+                    }}
+                    className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-full"
+                    onClick={() => setSelectedItem(item)}
+                  >
+                    <Image
+                      src={item.image || "/placeholder.svg"}
+                      alt={item.title}
+                      width={800}
+                      height={600}
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold mb-2 text-black">{item.title}</h3>
+                      <span className="text-gray-600">{item.category}</span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+          </AnimatedSection>
+          <AnimatePresence>
+            {selectedItem && (
+              <Dialog open={selectedItem !== null} onClose={() => setSelectedItem(null)} className="relative z-50">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="fixed inset-0 bg-black/70"
+                  aria-hidden="true"
+                />
+                <div className="fixed inset-0 flex items-center justify-center p-4">
+                  <Dialog.Panel>
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.9, opacity: 0 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="mx-auto max-w-6xl w-full rounded-2xl bg-white bg-opacity-90 p-8 shadow-xl"
+                    >
+                      <button
+                        onClick={() => setSelectedItem(null)}
+                        className="absolute top-2 right-2 text-gray-300 hover:text-white"
+                      >
+                        <XMarkIcon className="h-6 w-6" />
+                      </button>
+                      {selectedItem && (
+                        <div>
+                          <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.2, duration: 0.5 }}
+                          >
+                            <Image
+                              src={selectedItem.image || "/placeholder.svg"}
+                              alt={selectedItem.title}
+                              width={600}
+                              height={400}
+                              className="w-full h-48 sm:h-64 object-cover rounded-t-2xl mb-4"
+                            />
+                          </motion.div>
+                          <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.4, duration: 0.5 }}
+                          >
+                            <Dialog.Title className="text-xl sm:text-2xl font-semibold mb-2 text-black">
+                              {selectedItem.title}
+                            </Dialog.Title>
+                            {"longDescription" in selectedItem ? (
+                              <p className="text-black">{selectedItem.longDescription}</p>
+                            ) : null}
+                          </motion.div>
+                        </div>
+                      )}
+                    </motion.div>
+                  </Dialog.Panel>
+                </div>
+              </Dialog>
+            )}
+          </AnimatePresence>
+          {/* Decorative curves background */}
+          <div
+            className="fixed inset-0 pointer-events-none overflow-hidden"
+            style={{ zIndex: -2 }}
           >
-            {/* Blue curves */}
-            <path
-              d="M0,100 C400,150 800,50 1920,100"
-              fill="none"
-              stroke="rgba(135, 206, 235, 0.2)"
-              strokeWidth="2"
-            />
-            <path
-              d="M0,150 C600,200 1000,100 1920,150"
-              fill="none"
-              stroke="rgba(135, 206, 235, 0.15)"
-              strokeWidth="2"
-            />
-            <path
-              d="M0,200 C500,250 900,150 1920,200"
-              fill="none"
-              stroke="rgba(135, 206, 235, 0.1)"
-              strokeWidth="2"
-            />
+            <svg
+              className="absolute inset-0 w-full h-full"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1920 1080"
+              preserveAspectRatio="none"
+            >
+              {/* Blue curves */}
+              <path
+                d="M0,100 C400,150 800,50 1920,100"
+                fill="none"
+                stroke="rgba(135, 206, 235, 0.2)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,150 C600,200 1000,100 1920,150"
+                fill="none"
+                stroke="rgba(135, 206, 235, 0.15)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,200 C500,250 900,150 1920,200"
+                fill="none"
+                stroke="rgba(135, 206, 235, 0.1)"
+                strokeWidth="2"
+              />
 
-            {/* Pink curves */}
-            <path
-              d="M0,400 C400,450 800,350 1920,400"
-              fill="none"
-              stroke="rgba(255, 182, 193, 0.2)"
-              strokeWidth="2"
-            />
-            <path
-              d="M0,450 C600,500 1000,400 1920,450"
-              fill="none"
-              stroke="rgba(255, 182, 193, 0.15)"
-              strokeWidth="2"
-            />
-            <path
-              d="M0,500 C500,550 900,450 1920,500"
-              fill="none"
-              stroke="rgba(255, 182, 193, 0.1)"
-              strokeWidth="2"
-            />
+              {/* Pink curves */}
+              <path
+                d="M0,400 C400,450 800,350 1920,400"
+                fill="none"
+                stroke="rgba(255, 182, 193, 0.2)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,450 C600,500 1000,400 1920,450"
+                fill="none"
+                stroke="rgba(255, 182, 193, 0.15)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,500 C500,550 900,450 1920,500"
+                fill="none"
+                stroke="rgba(255, 182, 193, 0.1)"
+                strokeWidth="2"
+              />
 
-            {/* Green curves */}
-            <path
-              d="M0,700 C400,750 800,650 1920,700"
-              fill="none"
-              stroke="rgba(144, 238, 144, 0.2)"
-              strokeWidth="2"
-            />
-            <path
-              d="M0,750 C600,800 1000,700 1920,750"
-              fill="none"
-              stroke="rgba(144, 238, 144, 0.15)"
-              strokeWidth="2"
-            />
-            <path
-              d="M0,800 C500,850 900,750 1920,800"
-              fill="none"
-              stroke="rgba(144, 238, 144, 0.1)"
-              strokeWidth="2"
-            />
-          </svg>
+              {/* Green curves */}
+              <path
+                d="M0,700 C400,750 800,650 1920,700"
+                fill="none"
+                stroke="rgba(144, 238, 144, 0.2)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,750 C600,800 1000,700 1920,750"
+                fill="none"
+                stroke="rgba(144, 238, 144, 0.15)"
+                strokeWidth="2"
+              />
+              <path
+                d="M0,800 C500,850 900,750 1920,800"
+                fill="none"
+                stroke="rgba(144, 238, 144, 0.1)"
+                strokeWidth="2"
+              />
+            </svg>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

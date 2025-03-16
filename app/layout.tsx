@@ -1,8 +1,7 @@
-
-
 "use client";
 
 import "./globals.css";
+import Head from "next/head";
 import { Noto_Sans_JP } from "next/font/google";
 import Link from "next/link";
 import { Home, Briefcase, Mail, Book, Menu, X } from "lucide-react";
@@ -23,11 +22,9 @@ export default function RootLayout({
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [headerOpacity, setHeaderOpacity] = useState(1);
-  // usePathname を使って現在のパスを取得
   const pathname = usePathname();
 
   useEffect(() => {
-    // mounted 状態は不要なため setMounted を削除
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const maxScroll = 200;
@@ -53,10 +50,43 @@ export default function RootLayout({
 
   return (
     <html lang="ja" className={notoSansJP.variable}>
+      <Head>
+        {/* 文字コード、viewport 設定 */}
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* ページタイトル・説明 */}
+        <title>3DCAD - 未来のデザインと技術</title>
+        <meta
+          name="description"
+          content="革新的な3DCADサービスと最新技術の情報を提供。デザイン、技術研修、ブログなど多彩なコンテンツで未来を創造します。"
+        />
+        <meta name="keywords" content="3DCAD, デザイン, 技術, サービス, ブログ, 研修" />
+        <link rel="canonical" href="https://yourwebsite.com" />
+
+        {/* Open Graph / SNS 用 */}
+        <meta property="og:title" content="3DCAD - 未来のデザインと技術" />
+        <meta
+          property="og:description"
+          content="革新的な3DCADサービスと最新技術の情報を提供。デザイン、技術研修、ブログなど多彩なコンテンツで未来を創造します。"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yourwebsite.com" />
+        <meta property="og:image" content="https://yourwebsite.com/og-image.jpg" />
+
+        {/* Twitter 用 */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="3DCAD - 未来のデザインと技術" />
+        <meta
+          name="twitter:description"
+          content="革新的な3DCADサービスと最新技術の情報を提供。デザイン、技術研修、ブログなど多彩なコンテンツで未来を創造します。"
+        />
+        <meta name="twitter:image" content="https://yourwebsite.com/twitter-image.jpg" />
+      </Head>
       <body className="bg-yellow-50 text-gray-900 flex flex-col min-h-screen">
         {/* Top Navigation Bar */}
         <header
-          className="fixed top-0 left-0 w-full bg-white bg-opacity-80 backdrop-blur-md  z-[9999] transition-opacity duration-300"
+          className="fixed top-0 left-0 w-full bg-white bg-opacity-80 backdrop-blur-md z-[9999] transition-opacity duration-300"
           style={{
             backgroundColor: `rgba(255, 255, 255, ${
               pathname === "/" ? headerOpacity * 0.8 : headerOpacity * 0.9

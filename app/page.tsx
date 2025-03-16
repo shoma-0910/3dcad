@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -24,7 +25,6 @@ const FadeInWhenVisible: React.FC<{ children: React.ReactNode }> = ({ children }
     }
   }, []);
 
-  // クライアントでマウント完了するまでレンダリングを控える
   if (!mounted) return null;
 
   return (
@@ -65,7 +65,6 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
       <h3 className="text-xl font-semibold mb-2 text-yellow-400">
         {service.title}
       </h3>
-
       <Link
         href={`/services#${service.id}`}
         className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition duration-300 group"
@@ -83,7 +82,7 @@ const services = [
     title: "3DCADデザイン",
     description:
       "オリジナル製品やプロトタイプのデザイン、製作を一貫してサポート。ユニークで実用的なアイデアを形にします。",
-    icon: "/3DCADデザイン.jpg", // ここを変更
+    icon: "/3DCADデザイン.jpg",
   },
   {
     id: "3d-scan-service",
@@ -91,7 +90,7 @@ const services = [
     description:
       "高精度な3Dスキャンを活用し、オブジェクトや人物のデータ化を提供。製品開発や記念品制作、逆算エンジニアリングに対応可能。",
     icon:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/568CE458-8A2E-4012-98DD-FA7177087960-UHg802Qp4Wpo5aJchNPDvEoFL204w2.jpeg", // ここを変更
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/568CE458-8A2E-4012-98DD-FA7177087960-UHg802Qp4Wpo5aJchNPDvEoFL204w2.jpeg",
   },
   {
     id: "technical-training",
@@ -125,118 +124,139 @@ const blogPosts = [
 
 export default function Home() {
   return (
-    // ページ全体に面白いアニメーションを付与（初期状態からスケール・回転してスプリングで表示）
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-      animate={{ opacity: 1, scale: 1, rotate: 0 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className="container mx-auto px-4 py-16 space-y-32 relative z-50 text-center"
-    >
-      <section className="mb-32 text-center">
-        <FadeInWhenVisible>
-          <div className="max-w-4xl mx-auto text-center space-y-8 text-center">
-
-          <motion.div
-            className="mx-auto text-center text-3xl md:text-6xl font-bold mb-8 artistic-text-shadow text-gray-900"
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="block text-yellow-600 mb-2 text-center">アイデアをカタチに</span>
-            <span className="block text-center">未来をデザインする</span>
-          </motion.div>
-
-            <p className="text-xl text-black mb-12 max-w-2xl mx-auto">
-              革新的な3Dソリューションで、あなたの夢や課題を具現化し、新しい価値を創造します。
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link
-                href="/services"
-                className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-10 py-4 rounded-full transition duration-300 text-lg font-semibold shadow-lg hover:shadow-xl inline-flex items-center justify-center glow"
+    <>
+      <Head>
+        <title>未来をデザインする - 3Dソリューション</title>
+        <meta
+          name="description"
+          content="革新的な3Dソリューションで、あなたの夢や課題を具現化し、新しい価値を創造します。3DCADデザイン、3Dスキャンサービス、技術研修・講座など多彩なサービスを提供。"
+        />
+        <meta name="keywords" content="3D, CAD, デザイン, スキャン, 技術研修, 3Dプリンティング, 文化財, デジタル保存" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="未来をデザインする - 3Dソリューション" />
+        <meta
+          property="og:description"
+          content="革新的な3Dソリューションで、あなたの夢や課題を具現化し、新しい価値を創造します。"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yourwebsite.com/" />
+        <meta property="og:image" content="https://yourwebsite.com/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="未来をデザインする - 3Dソリューション" />
+        <meta
+          name="twitter:description"
+          content="革新的な3Dソリューションで、あなたの夢や課題を具現化し、新しい価値を創造します。"
+        />
+        <meta name="twitter:image" content="https://yourwebsite.com/twitter-image.jpg" />
+        <link rel="canonical" href="https://yourwebsite.com/" />
+      </Head>
+      <main className="container mx-auto px-4 py-16 space-y-32 relative z-50 text-center">
+        <section className="mb-32 text-center">
+          <FadeInWhenVisible>
+            <div className="max-w-4xl mx-auto space-y-8">
+              <motion.div
+                className="mx-auto text-3xl md:text-6xl font-bold mb-8 artistic-text-shadow text-gray-900"
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5 }}
               >
-                サービス一覧
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+                <span className="block text-yellow-600 mb-2">アイデアをカタチに</span>
+                <span className="block">未来をデザインする</span>
+              </motion.div>
+              <p className="text-xl text-black mb-12 max-w-2xl mx-auto">
+                革新的な3Dソリューションで、あなたの夢や課題を具現化し、新しい価値を創造します。
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <Link
+                  href="/services"
+                  className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-10 py-4 rounded-full transition duration-300 text-lg font-semibold shadow-lg hover:shadow-xl inline-flex items-center justify-center glow"
+                >
+                  サービス一覧
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+                <Link
+                  href="/blog"
+                  className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-10 py-4 rounded-full transition duration-300 text-lg font-semibold shadow-lg hover:shadow-xl inline-flex items-center justify-center glow"
+                >
+                  ブログ
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-10 py-4 rounded-full transition duration-300 text-lg font-semibold shadow-lg hover:shadow-xl inline-flex items-center justify-center glow"
+                >
+                  お問い合わせ
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </div>
+            </div>
+          </FadeInWhenVisible>
+        </section>
+
+        <section className="mb-32">
+          <div className="bg-gray-100 bg-opacity-100 backdrop-blur-md rounded-3xl p-8 shadow-2xl">
+            <FadeInWhenVisible>
+              <h2 className="text-5xl font-bold mb-16 text-center">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700 artistic-text-shadow">
+                  サービス概要
+                </span>
+              </h2>
+            </FadeInWhenVisible>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service) => (
+                <ServiceCard key={service.id} service={service} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-32">
+          <FadeInWhenVisible>
+            <h2 className="text-4xl font-bold mb-16 text-center artistic-text-shadow">
+              <span className="text-yellow-400">ブログ</span>
+            </h2>
+            <p className="text-xl text-black mb-12 max-w-3xl mx-auto">
+              3D技術の最新トレンド、業界のニュース、そして私たちのサービスに関する情報をお届けします。
+            </p>
+          </FadeInWhenVisible>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {blogPosts.map((post) => (
+              <FadeInWhenVisible key={post.id}>
+                <motion.div
+                  className="bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow duration-300 border border-yellow-500/30"
+                  whileHover={{ scale: 1.03 }}
+                >
+                  <article>
+                    <h3 className="text-2xl font-semibold mb-4 text-yellow-500">
+                      {post.title}
+                    </h3>
+                    <p className="text-black text-sm mb-4">{post.date}</p>
+                    <p className="text-black mb-6">{post.excerpt}</p>
+                    <Link
+                      href="/blog"
+                      className="text-yellow-500 hover:text-yellow-400 inline-flex items-center transition duration-300"
+                    >
+                      続きを読む
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </article>
+                </motion.div>
+              </FadeInWhenVisible>
+            ))}
+          </div>
+          <FadeInWhenVisible>
+            <div className="mt-16">
               <Link
                 href="/blog"
-                className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-10 py-4 rounded-full transition duration-300 text-lg font-semibold shadow-lg hover:shadow-xl inline-flex items-center justify-center glow"
+                className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-10 py-4 rounded-full transition duration-300 inline-flex items-center justify-center font-semibold text-lg shadow-lg hover:shadow-xl glow"
               >
-                ブログ
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="/contact"
-                className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-10 py-4 rounded-full transition duration-300 text-lg font-semibold shadow-lg hover:shadow-xl inline-flex items-center justify-center glow"
-              >
-                お問い合わせ
+                すべての記事を見る
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </div>
-          </div>
-        </FadeInWhenVisible>
-      </section>
-
-      <section className="mb-32">
-        <div className="bg-gray-100 bg-opacity-100 backdrop-blur-md rounded-3xl p-8 shadow-2xl">
-          <FadeInWhenVisible>
-            <h2 className="text-5xl font-bold mb-16 text-center">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-700 artistic-text-shadow">
-                サービス概要
-              </span>
-            </h2>
           </FadeInWhenVisible>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mb-32">
-        <FadeInWhenVisible>
-          <h2 className="text-4xl font-bold mb-16 text-center artistic-text-shadow">
-            <span className="text-yellow-400">ブログ</span>
-          </h2>
-          <p className="text-xl text-black mb-12  max-w-3xl mx-auto">
-            3D技術の最新トレンド、業界のニュース、そして私たちのサービスに関する情報をお届けします。
-          </p>
-        </FadeInWhenVisible>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {blogPosts.map((post) => (
-            <FadeInWhenVisible key={post.id}>
-              <motion.div
-                className="bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow duration-300 border border-yellow-500/30"
-                whileHover={{ scale: 1.03 }}
-              >
-                <h3 className="text-2xl font-semibold mb-4 text-yellow-500">
-                  {post.title}
-                </h3>
-                <p className="text-black text-sm mb-4">{post.date}</p>
-                <p className="text-black mb-6">{post.excerpt}</p>
-                <Link
-                  href="blog"
-                  className="text-yellow-500 hover:text-yellow-400 inline-flex items-center transition duration-300"
-                >
-                  続きを読む
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </motion.div>
-            </FadeInWhenVisible>
-          ))}
-        </div>
-        <FadeInWhenVisible>
-          <div className="mt-16">
-            <Link
-              href="/blog"
-              className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-10 py-4 rounded-full transition duration-300 inline-flex items-center justify-center font-semibold text-lg shadow-lg hover:shadow-xl glow"
-            >
-              すべての記事を見る
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </FadeInWhenVisible>
-      </section>
-    </motion.div>
+        </section>
+      </main>
+    </>
   );
 }

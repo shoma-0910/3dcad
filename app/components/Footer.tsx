@@ -1,14 +1,38 @@
 import Link from "next/link"
+import Head from "next/head"
 import { Facebook, Instagram, HomeIcon, Youtube } from "lucide-react"
 import { useState } from "react"
-import {  X } from "lucide-react"
+import { X } from "lucide-react"
 
 const Footer = () => {
   const [isPrivacyPolicyOpen, setIsPrivacyPolicyOpen] = useState(false)
 
+  // 組織の構造化データ（JSON‑LD）
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "3DCAD",
+    "url": "https://yourwebsite.com",
+    "logo": "https://yourwebsite.com/path/to/logo.png",
+    "sameAs": [
+      "https://www.instagram.com/tsucchiii1",
+      "https://www.facebook.com/takumi.tsuch",
+      "https://www.faiz.jp/",
+      "https://twitter.com/tsucchiii0901",
+      "https://youtube.com/channel/UC9kBw_65gQDvSqeW1143B3w"
+    ]
+  }
+
   return (
     <>
-      <footer className="bg-white text-gray-800 relative z-20 shadow-md">
+      <Head>
+        <script
+          type="application/ld+json"
+          // JSON.stringify を使って構造化データを出力
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </Head>
+      <footer className="bg-white text-gray-800 relative z-20 shadow-md" aria-label="サイトフッター">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-20">
           {/* Top section with logo and social links */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-10 pb-8 border-b border-gray-200">
@@ -17,7 +41,6 @@ const Footer = () => {
             </div>
 
             <div>
-         
               <div className="flex space-x-5">
                 <a
                   href="https://www.instagram.com/tsucchiii1"
@@ -42,7 +65,7 @@ const Footer = () => {
                   className="text-gray-500 hover:text-gray-900 transition-colors duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Website"
+                  aria-label="公式サイト"
                 >
                   <HomeIcon size={20} />
                 </a>
@@ -103,30 +126,30 @@ const Footer = () => {
             </div>
           </div>
 
-
-
           {/* Bottom section with copyright */}
           <div className="text-center pt-6 border-t border-gray-200">
-            <p className="text-sm text-gray-600">&copy; {new Date().getFullYear()} 土林さん. All rights reserved.</p>
+            <p className="text-sm text-gray-600">
+              &copy; {new Date().getFullYear()} 土林さん. All rights reserved.
+            </p>
             <button
-                    onClick={() => setIsPrivacyPolicyOpen(true)}
-                    className="text-sm text-gray-600 hover:text-yellow-500 transition-colors duration-300 underline"
-                    style={{ cursor: "pointer" }}
-                  >
-                    プライバシーポリシー
-                  </button>
+              onClick={() => setIsPrivacyPolicyOpen(true)}
+              className="text-sm text-gray-600 hover:text-yellow-500 transition-colors duration-300 underline"
+              style={{ cursor: "pointer" }}
+            >
+              プライバシーポリシー
+            </button>
           </div>
         </div>
       </footer>
 
       {/* プライバシーポリシーモーダル */}
       {isPrivacyPolicyOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] p-4">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] p-4" aria-modal="true" role="dialog">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
             <div className="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
               <h2 className="text-2xl font-bold text-gray-800">プライバシーポリシー</h2>
-              <button onClick={() => setIsPrivacyPolicyOpen(false)} className="p-2 rounded-full hover:bg-gray-100">
-         
+              <button onClick={() => setIsPrivacyPolicyOpen(false)} className="p-2 rounded-full hover:bg-gray-100" aria-label="閉じる">
+                <X size={20} />
               </button>
             </div>
 
@@ -141,7 +164,9 @@ const Footer = () => {
 
                 <section>
                   <h3 className="text-lg font-semibold">取得する情報</h3>
-                  <p className="mt-2">当社は、お問い合わせフォームを通じて、以下の情報を取得する場合があります。</p>
+                  <p className="mt-2">
+                    当社は、お問い合わせフォームを通じて、以下の情報を取得する場合があります。
+                  </p>
                   <ul className="list-disc pl-5 mt-2">
                     <li>お名前</li>
                     <li>メールアドレス</li>
@@ -152,7 +177,9 @@ const Footer = () => {
 
                 <section>
                   <h3 className="text-lg font-semibold">利用目的</h3>
-                  <p className="mt-2">取得した個人情報は、以下の目的で利用いたします。</p>
+                  <p className="mt-2">
+                    取得した個人情報は、以下の目的で利用いたします。
+                  </p>
                   <ul className="list-disc pl-5 mt-2">
                     <li>お問い合わせ内容に対する回答、連絡、サービス提供のため</li>
                     <li>サービスの向上・改善のための分析やマーケティング調査のため</li>
@@ -197,7 +224,9 @@ const Footer = () => {
 
                 <section>
                   <h3 className="text-lg font-semibold">お問い合わせ窓口</h3>
-                  <p className="mt-2">本プライバシーポリシーに関するお問い合わせは、下記の窓口までお願いいたします。</p>
+                  <p className="mt-2">
+                    本プライバシーポリシーに関するお問い合わせは、下記の窓口までお願いいたします。
+                  </p>
                   <div className="mt-2">
                     <p>
                       <strong>【お問い合わせ窓口】</strong>
@@ -226,4 +255,3 @@ const Footer = () => {
 }
 
 export default Footer
-
