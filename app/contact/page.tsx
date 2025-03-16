@@ -76,13 +76,13 @@ export default function Contact() {
                   </div>
 
                   <form
-                    action="https://formsubmit.co/cs.tkst.4strings@gmail.com"
+                    action="https://formsubmit.co/tsuchibayashi.t@gmail.com"
                     method="POST"
                     onSubmit={() => setIsSubmitting(true)}
                     className="px-6 py-4"
                   >
                     {/* FormSubmit.co 設定 */}
-                    <input type="hidden" name="_subject" value="新しいお問い合わせが届きました" />
+                    <input type="hidden" name="_subject" value="3DCADへのお問い合わせ" />
                     <input type="hidden" name="_captcha" value="false" />
                     <input type="text" name="_honey" style={{ display: "none" }} />
                     <input type="hidden" name="_template" value="table" />
