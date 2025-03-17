@@ -40,8 +40,9 @@ const services = [
 
 const portfolioItems = [
   { id: 1, title: "鳥", image: "/bird.jpeg", category: "" },
-  { id: 2, title: "人　BEFORE", image: "/hito_before.jpeg", category: "" },
-  { id: 3, title: "人　AFTER", image: "/hito_after.jpeg", category: "" },
+  { id: 2, title: "人物を3Dスキャン", image: "/hito_before.jpeg", category: "" },
+  // 修正: タイトルの途中で改行されず1行で記述
+  { id: 3, title: "人物3Dスキャンしたデータを3Dプリント(フィギュア化)", image: "/hito_after.jpeg", category: "" },
   { id: 4, title: "ごえんお結び　BEFORE", image: "/onigiri_before.jpeg", category: "" },
   { id: 5, title: "ごえんお結び　AFTER", image: "/onigiri_after.jpeg", category: "" },
   { id: 6, title: "建物", image: "/house.jpeg", category: "" },
