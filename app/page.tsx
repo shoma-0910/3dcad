@@ -82,7 +82,7 @@ const services = [
     title: "3DCADデザイン",
     description:
       "オリジナル製品やプロトタイプのデザイン、製作を一貫してサポート。ユニークで実用的なアイデアを形にします。",
-    icon: "/3DCADデザイン.jpg",
+    icon: "/3DCAD.jpg",
   },
   {
     id: "3d-scan-service",
