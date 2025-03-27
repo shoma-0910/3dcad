@@ -15,59 +15,50 @@ export interface BlogPost {
   const blogPosts: BlogPost[] = [
     {
       id: 1,
-      title: "テキスト",
-      date: "2023年6月15日",
-      excerpt: "テキストテキストテキストテキストテキストテキスト。",
+      title: "Coming Soon",
+      date: "",
+      excerpt: "",
       coverImage:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9CB9EE6A-06CB-465C-922C-5C399A34D477-UGBzxT5wLo6yCb9gzHQYELHUw4vcLM.jpeg",
+        "",
       images: [
         {
-          url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/568CE458-8A2E-4012-98DD-FA7177087960-UHg802Qp4Wpo5aJchNPDvEoFL204w2.jpeg",
-          caption: "テキストテキストテキストテキストテキスト",
+          url: "",
+          caption: "",
         },
         {
-          url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CEB6CA3F-F442-4966-BB1D-C7F6336AAF89-0Pd8cDCog7miTVCqoINqCZhiZLtmKK.jpeg",
-          caption: "テキストテキストテキストテキストテキスト",
+          url: "",
+          caption: "",
         },
       ],
       content: `
-        <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <p></p>
         
-        <h2>テキストテキストテキストテキスト</h2>
-        <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-        
-        <figure>
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/568CE458-8A2E-4012-98DD-FA7177087960-UHg802Qp4Wpo5aJchNPDvEoFL204w2.jpeg" alt="3Dスキャナーでのデータ収集" />
-          <figcaption>テキストテキストテキストテキストテキスト</figcaption>
-        </figure>
-        
-        <h2>テキストテキストテキストテキストテキスト</h2>
-        <p>テキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <h2></h2>
+        <p></p>
         
         <figure>
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CEB6CA3F-F442-4966-BB1D-C7F6336AAF89-0Pd8cDCog7miTVCqoINqCZhiZLtmKK.jpeg" alt="3D試作モデル" />
-          <figcaption>テキストテキストテキストテキストテキスト</figcaption>
+          <img src="" />
+          <figcaption></figcaption>
         </figure>
         
-        <h2>テキストテキストテキストテキスト</h2>
-        <p>テキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <h2></h2>
+        <p></p>
         
-        <h2>テキストテキストテキスト</h2>
-        <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <figure>
+          <img src="" />
+          <figcaption></figcaption>
+        </figure>
         
-        <p>テキストテキストテキストテキストテキスト</p>
+        <h2></h2>
+        <p></p>
+        
+        <h2></h2>
+        <p></p>
+        
+        <p></p>
       `,
     },
-    {
-      id: 2,
-      title: "テキスト",
-      date: "2023年5月22日",
-      excerpt: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト。",
-     
-      content: `
-       
-      `,
-    },
+   
   ]
   
   // getBlogPosts関数が正しく実装されていることを確認してください

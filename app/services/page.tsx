@@ -46,6 +46,8 @@ const portfolioItems = [
   { id: 4, title: "ごえんお結び　BEFORE", image: "/onigiri_before.jpeg", category: "" },
   { id: 5, title: "ごえんお結び　AFTER", image: "/onigiri_after.jpeg", category: "" },
   { id: 6, title: "建物", image: "/house.jpeg", category: "" },
+  { id: 7, title: "オリジナル名前入りゴルフマーカー⛳️", image: "/golf1.jpg", category: "" },
+  { id: 8, title: "オリジナル名前入りゴルフマーカー⛳️", image: "/golf2.jpg", category: "" },
 ]
 
 const AnimatedSection: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -148,7 +150,7 @@ const Services: React.FC = () => {
                       height={600}
                       className="w-full h-64 object-cover"
                     />
-                    <div className="p-6 flex flex-col h-full">
+                    <div className="p-7 flex flex-col h-full">
                       <h3 className="text-xl font-semibold mb-2 text-black">{service.title}</h3>
                       <p className="mb-4 flex-grow">{service.description}</p>
                     </div>
