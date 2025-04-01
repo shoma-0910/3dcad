@@ -58,6 +58,7 @@ const portfolioItems: Item[] = [
   { id: 6, title: "建物", image: "/house.jpeg", category: "" },
   { id: 7, title: "オリジナル名前入りゴルフマーカー⛳️", image: "/golf1.jpg", category: "" },
   { id: 8, title: "オリジナル名前入りゴルフマーカー⛳️", image: "/golf2.jpg", category: "" },
+  { id: 9, title: "企業向け3D看板", image: "/skystage.jpg", category: "" },
 ]
 
 // アニメーション用の variants
