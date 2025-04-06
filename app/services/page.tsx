@@ -59,6 +59,8 @@ const portfolioItems: Item[] = [
   { id: 7, title: "オリジナル名前入りゴルフマーカー⛳️", image: "/golf1.jpg", category: "" },
   { id: 8, title: "オリジナル名前入りゴルフマーカー⛳️", image: "/golf2.jpg", category: "" },
   { id: 9, title: "企業向け3D看板", image: "/skystage.jpg", category: "" },
+  { id: 10, title: " 桜の根付【記念品・ノベルティ】", image: "/river.jpg", category: "" },
+
 ]
 
 // アニメーション用の variants
