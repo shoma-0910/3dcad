@@ -50,17 +50,18 @@ const services = [
 ]
 
 const portfolioItems: Item[] = [
-  { id: 1, title: "鳥", image: "/bird.jpeg", category: "" },
+  { id: 1, title: "イラストから3Dフィギュア製作", image: "/bird.jpeg", category: "" },
   { id: 2, title: "人物を3Dスキャン", image: "/hito_before.jpeg", category: "" },
   { id: 3, title: "人物3Dスキャンしたデータを3Dプリント(フィギュア化)", image: "/hito_after.jpeg", category: "" },
   { id: 4, title: "ごえんお結び　BEFORE", image: "/onigiri_before.jpeg", category: "" },
   { id: 5, title: "ごえんお結び　AFTER", image: "/onigiri_after.jpeg", category: "" },
-  { id: 6, title: "建物", image: "/house.jpeg", category: "" },
+  { id: 6, title: "建物模型", image: "/house.jpeg", category: "" },
   { id: 7, title: "オリジナル名前入りゴルフマーカー⛳️", image: "/golf1.jpg", category: "" },
   { id: 8, title: "オリジナル名前入りゴルフマーカー⛳️", image: "/golf2.jpg", category: "" },
   { id: 9, title: "企業向け3D看板", image: "/skystage.jpg", category: "" },
-  { id: 10, title: " 桜の根付【記念品・ノベルティ】", image: "/river.jpg", category: "" },
-
+  { id: 10, title: "桜の根付【記念品・ノベルティ】", image: "/river.jpg", category: "" },
+  { id: 11, title: "教室案内スタンド", image: "/教室案内スタンダード.jpg", category: "" },
+  { id: 12, title: "選手権用オリジナルトロフィー", image: "/選手権.jpg", category: "" },
 ]
 
 // アニメーション用の variants
@@ -183,7 +184,7 @@ const Services: React.FC = () => {
             <Dialog open={true} onClose={() => setSelectedItem(null)} className="relative z-50">
               <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
               <div className="fixed inset-0 flex items-center justify-center p-4">
-                <Dialog.Panel className="mx-auto max-w-6xl w-full rounded-2xl bg-white bg-opacity-90 p-8 shadow-xl">
+                <Dialog.Panel className="mx-auto max-w-6xl  rounded-2xl bg-white bg-opacity-90 p-8 shadow-xl">
                   <button
                     onClick={() => setSelectedItem(null)}
                     className="absolute top-2 right-2 text-gray-300 hover:text-white"
